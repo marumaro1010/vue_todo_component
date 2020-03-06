@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>TODO LIST</h2>
+    <todofliter></todofliter>
+    <todoinput v-on:AddChild="addChildMethod"></todoinput>
+    <todolist :todos="todos"></todolist>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Vue from 'vue';
+import Todolist from './components/todo-list.vue';
+import Todofliter from './components/todo-fliter.vue';
+import Todoinput from './components/todo-input.vue';
+
+Vue.component('todolist', Todolist);
+Vue.component('todoinput',  Todoinput);
+Vue.component('todofliter',  Todofliter);
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data()
+  {
+    return{
+      id:0,
+      todos:[]
+    }
+  },
+  methods:
+  {
+    addChildMethod(msg)
+    {
+      this.todos.push({
+        id: this.id++,
+        value: msg,
+        complete:false,
+        edit:false
+      });
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

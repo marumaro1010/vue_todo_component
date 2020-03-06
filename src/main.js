@@ -1,8 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
+import Apphaha from './App.vue'
 
 Vue.config.productionTip = false
+window.bus = new Vue();
 
 new Vue({
-  render: h => h(App),
+  render: h => h(Apphaha),
 }).$mount('#app')
