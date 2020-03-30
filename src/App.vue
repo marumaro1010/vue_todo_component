@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <h2>TODO LIST</h2>
-    <todofliter></todofliter>
     <todoinput v-on:AddChild="addChildMethod"></todoinput>
+    <todofliter></todofliter>
     <todolist :todos="todos"></todolist>
   </div>
 </template>

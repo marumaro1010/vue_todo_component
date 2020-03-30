@@ -1,12 +1,18 @@
 <template> 
     <div>
-        <li v-for="(todo,index) in fliter_list " :index="index" :key="todo.id">
-            <input v-if="todo.edit" type="text" v-model="todo.value"/>
-            <label v-else><span :class="{ linetext: todo.complete }">{{ todo.value }}</span></label>
-            <button @click="ModChild(todo)">修改</button>
-            <button @click="DeleteChild(index)">刪除</button>
-            <button @click="CompleteChild(todo)" v-if="todo.complete == false">完成</button>
-        </li>
+        <ul class="listStyle">
+            <li v-for="(todo,index) in fliter_list " :index="index" :key="todo.id">
+                <div>
+                    <input  class="todo_list" v-if="todo.edit" type="text" style="width:300px" v-model="todo.value"/>
+                    <label  v-else style="width:410px"><span :class="{ linetext: todo.complete }">{{ todo.value }}</span></label>
+                    <div class="btn_action">
+                        <button class="btn_pic" @click="ModChild(todo)"><i aria-hidden="true" class="material-icons">create</i></button>
+                        <button class="btn_pic" @click="DeleteChild(index)"><i aria-hidden="true" class="material-icons">delete</i></button>
+                        <button class="btn_pic" @click="CompleteChild(todo)" v-if="todo.complete == false"><i aria-hidden="true" class="material-icons">done</i></button>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -83,8 +89,10 @@ export default
         fliter(iscomplete)
         {
             var list = {};
-            for(var index in this.list) {
-                if(this.todos[index].complete == iscomplete) {
+            for(var index in this.list) 
+            {
+                if(this.todos[index].complete == iscomplete) 
+                {
                     list[index] = this.todos[index];
                 }
             }
